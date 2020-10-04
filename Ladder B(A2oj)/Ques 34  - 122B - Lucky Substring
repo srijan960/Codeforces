@@ -1,0 +1,25 @@
+import java.util.Scanner;
+ 
+ 
+ 
+ 
+    public class Codeforces {
+        
+       
+ 
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            String s = sc.next();
+            int four = 0;
+            int seven = 0;
+            for(char c : s.toCharArray()){
+                if(c - '0' == 4) four++;
+                else if(c - '0' == 7) seven++;
+            }
+            if(four == 0 && seven == 0) System.out.println(-1);
+            else if(four >= seven) System.out.println(4);
+            else if(seven > four) System.out.println(7);
+        }    
+    }
+ 
+ 
