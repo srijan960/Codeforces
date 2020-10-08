@@ -1,0 +1,52 @@
+      import java.awt.Point;
+           import java.io.InputStreamReader;
+            import java.io.BufferedReader;
+            import java.io.IOException; 
+            import java.lang.reflect.Array;
+            import java.util.ArrayList;
+            import java.util.Arrays;
+            import java.util.Collections;
+            import java.util.HashMap;
+            import java.util.HashSet;
+            import java.util.Iterator;
+            import java.util.List;
+            import java.util.Map;
+            import java.util.Optional;
+            import java.util.Set;
+            import java.util.TreeMap;
+ 
+ 
+ 
+              public class Codeforces {
+ 
+                  public static int gcd(int a, int b){
+                      if(b == 0) return a;
+                      return gcd(b, a % b);
+                  }
+ 
+                  public static void main(String[] args) throws IOException {
+                  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                   String[] nxy = br.readLine().trim().split(" ");
+                   int n = Integer.parseInt(nxy[0]);
+                   int x = Integer.parseInt(nxy[1]);
+                   int y = Integer.parseInt(nxy[2]);
+                   Set<Point> set = new HashSet<>();
+                   int ans = 0;
+                   
+                   for(int i = 0; i < n; i++){
+                       String [] s = br.readLine().trim().split(" ");
+                       int Xc = Integer.parseInt(s[0]);
+                       int Yc = Integer.parseInt(s[1]);
+                       int a = x  - Xc;
+                       int b = y - Yc;
+                       int k = gcd(a, b);
+                       a = a / k;
+                       b = b / k;
+                       set.add(new Point(a, b));
+                       
+                   }
+                   System.out.println(set.size());
+ 
+                  }
+ 
+                  }  
