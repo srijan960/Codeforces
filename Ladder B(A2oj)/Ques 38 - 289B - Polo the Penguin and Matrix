@@ -1,0 +1,77 @@
+import java.io.InputStreamReader;
+          import java.io.BufferedReader;
+          import java.io.IOException; 
+          import java.lang.reflect.Array;
+          import java.util.ArrayList;
+          import java.util.Arrays;
+          import java.util.Collections;
+          import java.util.HashMap;
+          import java.util.HashSet;
+          import java.util.Iterator;
+          import java.util.List;
+          import java.util.Map;
+          import java.util.Optional;
+          import java.util.Set;
+          import java.util.TreeMap;
+
+
+ 
+            public class Codeforces {
+ 
+ 
+ 
+                public static void main(String[] args) throws IOException {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                 String[] nmd = br.readLine().trim().split(" ");
+                 int n = Integer.parseInt(nmd[0]);
+                 int m = Integer.parseInt(nmd[1]);
+                 int d = Integer.parseInt(nmd[2]);
+                 ArrayList<Integer> list = new ArrayList<>();
+                 int[][] arr = new int[n][m];
+                 for(int i = 0; i < n; i++){
+                     String[] s = br.readLine().trim().split(" ");
+                     for(int j = 0; j < m; j++){
+                         arr[i][j] = Integer.parseInt(s[j]);
+                         list.add(arr[i][j]);
+                     }
+                 }
+                 for(int i = 0 ; i < list.size(); i++){
+                     if(Math.abs(list.get(0) - list.get(i)) % d != 0){
+                         System.out.println("-1");
+                         System.exit(0);
+                     }
+                 }
+                 
+                 Collections.sort(list);
+                 int mid = list.size() / 2;
+                 int mida = mid + 1;
+                 int midb = mid - 1;
+                 long MidAns = 0;
+                 long MidaAns = 0;
+                 long MidbAns = 0;
+                 //System.out.println(d);
+                 for(int i = 0; i < list.size() ; i++ ){
+                     MidAns += Math.abs(list.get(mid) - list.get(i)) /d;
+                 }
+                 if(mida < list.size()){
+                    for(int i = 0; i < list.size() ; i++ ){
+                     MidaAns += (Math.abs(list.get(mida) - list.get(i)) / d);
+                 }   
+                 }
+                 if(midb >= 0){
+                    for(int i = 0; i < list.size() ; i++ ){
+                     MidbAns += (Math.abs(list.get(midb) - list.get(i)) / d);
+                 }   
+                 }
+                 //System.out.println(MidAns +" " + MidaAns +" "+MidbAns);
+                 long ans = Math.min(MidAns,MidaAns);
+                 ans = Math.min(ans,MidbAns);
+                 System.out.println(ans);
+                 
+                 
+                 
+                 
+                 
+                }
+                
+                }  
