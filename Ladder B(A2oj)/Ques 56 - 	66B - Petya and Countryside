@@ -1,0 +1,58 @@
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException; 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+ 
+ 
+ 
+    public class Codeforces {
+        
+       
+ 
+        public static void main(String[] args) throws IOException {
+           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+           int n = Integer.parseInt(br.readLine());
+           int [] arr = new int[n];
+           String [] strs = br.readLine().trim().split(" ");
+           for(int i = 0;i < n; i++){
+               arr[i] = Integer.parseInt(strs[i]);
+           }
+           int res = 1;
+           for(int i = 0; i < n; i++){
+               int left = 0;
+               int LeftMin = arr[i];
+               for(int l = i - 1 ; l >= 0 ; l--){
+                   if(arr[l] <= LeftMin){
+                       left++;
+                       LeftMin = arr[l];
+                   }
+                   else break;
+               }
+               int right = 0;
+               int RightMin = arr[i];
+               for(int r = i + 1; r < n; r++){
+                   if(arr[r] <= RightMin ){
+                       right++;
+                       RightMin = arr[r];
+                   }
+                   else break;
+               }
+               
+               res = Math.max(res, left + right + 1);
+           }
+           System.out.println(res);
+           
+           
+           }
+           
+        }    
+    
+ 
+ 
+ 
+ 
+    
