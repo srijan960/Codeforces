@@ -1,0 +1,102 @@
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException; 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+ 
+ 
+ 
+    public class Codeforces {
+        
+       
+ 
+        public static void main(String[] args) throws IOException {
+           BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+          int n = Integer.parseInt(br.readLine());
+          int[] arr = new int[3];
+          int taxi = 0;
+          int pizza = 0;
+          int girl = 0;
+          List<String> ta = new ArrayList<>();
+          List<String> pi = new ArrayList<>();
+          List<String> gi = new ArrayList<>();
+          
+          while(n-- > 0){
+              String [] ss  = br.readLine().trim().split(" ");
+              int size = Integer.parseInt(ss[0]);
+              String name = ss[1];
+              int lt = 0;
+              int lp = 0;
+              int lg = 0;
+              while(size-- >0){
+                  String number2 = br.readLine();
+                  String number = "";
+                  for(char c : number2.toCharArray()){
+                      if(c != '-') number+= String.valueOf(c);
+                  }
+                  boolean AllSame = true;
+                  char cc = number.charAt(0);
+                  for(int i = 0; i < number.length() ; i++){
+                      if( cc != number.charAt(i)){
+                          AllSame = false;
+                          break;
+                      }
+                  }
+                  boolean Dec = true;
+                  for(int i = 0; i < number.length() - 1; i++){
+                       if(number.charAt(i) <= number.charAt(i + 1 )){
+                          Dec = false;
+                          break;
+                      }
+                  }
+                  if(AllSame) lt++;
+                  else if(Dec) lp++;
+                  else if(!AllSame && !Dec) lg++;
+              } 
+             // System.out.println(name+" "+lt +" "+ lp+" "+lg);
+              if(lt >= taxi ){
+                  if(!ta.isEmpty() && lt > taxi) ta.clear();
+                  taxi = lt;
+                  ta.add(name);
+              }
+              if(lp >= pizza ){
+                  if(!pi.isEmpty() && lp > pizza) pi.clear();
+                  pizza = lp;
+                  pi.add(name);
+              }
+              if(lg >= girl){
+                   if(!gi.isEmpty() && lg > girl) gi.clear();
+                  girl = lg;
+                  gi.add(name);
+              }
+          }
+          System.out.print("If you want to call a taxi, you should call:");
+          for(int i = 0; i < ta.size(); i++){
+              if(i == ta.size() - 1)System.out.print(" "+ta.get(i));
+              else System.out.print(" "+ta.get(i)+",");
+          }
+          System.out.print(".");
+          System.out.println();
+          System.out.print("If you want to order a pizza, you should call:");
+          for(int i = 0; i < pi.size(); i++){
+             if(i == pi.size() - 1)System.out.print(" "+pi.get(i));
+              else System.out.print(" "+pi.get(i)+",");
+          }
+          System.out.print(".");
+          System.out.println();
+          System.out.print("If you want to go to a cafe with a wonderful girl, you should call:");
+          for(int i = 0; i < gi.size(); i++){
+              if(i == gi.size() - 1)System.out.print(" "+gi.get(i));
+              else System.out.print(" "+gi.get(i)+",");
+          }
+          System.out.print(".");
+          System.out.println();
+        }    
+    }
+ 
+ 
