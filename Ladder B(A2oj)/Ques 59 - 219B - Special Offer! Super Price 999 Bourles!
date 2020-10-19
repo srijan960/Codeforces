@@ -1,0 +1,72 @@
+ import java.awt.Point;
+           import java.io.InputStreamReader;
+            import java.io.BufferedReader;
+            import java.io.IOException; 
+            import java.lang.reflect.Array;
+            import java.util.ArrayList;
+            import java.util.Arrays;
+            import java.util.Collections;
+            import java.util.HashMap;
+            import java.util.HashSet;
+            import java.util.Iterator;
+            import java.util.List;
+            import java.util.Map;
+            import java.util.Optional;
+            import java.util.Set;
+            import java.util.TreeMap;
+ 
+ 
+ 
+              public class Codeforces {
+ 
+                  public static void main(String[] args) throws IOException {
+                  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                  String[] s = br.readLine().trim().split(" ");
+                  long p = Long.parseLong(s[0]);
+                  long d = Long.parseLong(s[1]);
+                  
+                  String num = String.valueOf(p);
+                 
+                  long place = 0;
+                  long count = 0; 
+                  int NumberOfNine = 0;
+                  int i = num.length() - 1;
+                 
+                  while(i >= 1){
+                    if(num.charAt(i) != '9'){
+                        String temp = num.substring(0,i);
+                       // System.out.println(temp);
+                        long n = Long.parseLong(temp);
+                        n -= 1;
+                        temp = String.valueOf(n);
+                        temp += "9";
+                       // System.out.println(temp +" ct");
+                        if(i + 1 <= num.length() - 1){
+                         //  System.out.println("sss");
+                            temp += num.substring( i + 1, num.length());
+                           //  System.out.println(temp);
+                        }
+                       
+                        if(Long.parseLong(num) - Long.parseLong(temp) <= d){
+                            //System.out.println("on " +num);
+                            d -= Long.parseLong(num) - Long.parseLong(temp);
+                            num = temp;
+                            i--;
+                           // System.out.println(num +" num " + d +" dd");
+                        }
+                        else break;
+                    }
+                    else i--;
+                     
+                  }
+                  
+                 
+                  System.out.println(Long.parseLong(num));
+                   }
+                  }
+              
+                 
+                    
+                 
+                  
+                  
