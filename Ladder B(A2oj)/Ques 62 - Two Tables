@@ -1,0 +1,73 @@
+import java.awt.Point;
+           import java.io.InputStreamReader;
+            import java.io.BufferedReader;
+            import java.io.IOException; 
+            import java.lang.reflect.Array;
+            import java.util.ArrayList;
+            import java.util.Arrays;
+            import java.util.Collections;
+            import java.util.HashMap;
+            import java.util.HashSet;
+            import java.util.Iterator;
+            import java.util.List;
+            import java.util.Map;
+            import java.util.Optional;
+            import java.util.Set;
+            import java.util.TreeMap;
+ 
+ 
+ 
+              public class Codeforces {
+ 
+                  public static void main(String[] args) throws IOException {
+                  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                  String[]t1 = br.readLine().trim().split(" ");
+                  int n1 = Integer.parseInt(t1[0]);
+                  int m1 = Integer.parseInt(t1[1]);
+                  int[][] table1 = new int[n1][m1];
+                  for(int i = 0; i < n1; i++){
+                      String s = br.readLine();
+                      for(int j = 0; j < m1; j++){
+                          table1[i][j] = Character.getNumericValue(s.charAt(j));
+                      }
+                  }
+                  String[]t2 = br.readLine().trim().split(" ");
+                  int n2 = Integer.parseInt(t2[0]);
+                  int m2 = Integer.parseInt(t2[1]);
+                  int[][] table2 = new int[n2][m2];
+                  for(int i = 0; i < n2; i++){
+                      String s = br.readLine();
+                      for(int j = 0; j < m2; j++){
+                          table2[i][j] = Character.getNumericValue(s.charAt(j));
+                      }
+                  }
+                 int AnsX = 0;
+                 int AnsY = 0;
+                 int MaxSum = Integer.MIN_VALUE;
+                 for(int x = -50 ; x <= 50; x++){
+                     for(int y = -50; y <=50; y++){
+                         int TempSum = 0;
+                         for(int i = 0; i < n1; i++){
+                             for(int j = 0; j < m1; j++){
+                                 if(i + x >= 0 && j + y >= 0 && i + x < n2 && j + y < m2){
+                                     TempSum += table1[i][j] * table2[i + x][j + y];
+                                 }
+                             }
+                         }
+                         if(TempSum >= MaxSum){
+                             MaxSum = TempSum;
+                             AnsX = x;
+                             AnsY = y;
+                         }
+                     }
+                 }
+                 System.out.println(AnsX +" "+ AnsY);
+                  
+                   }
+                  }
+              
+                 
+                    
+                 
+                  
+                  
