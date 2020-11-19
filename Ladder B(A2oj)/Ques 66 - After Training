@@ -1,0 +1,88 @@
+import java.awt.Point;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Queue;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+ 
+public class Codeforces {
+    public static void main(String[] args) throws java.lang.Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] s = br.readLine().trim().split(" ");
+        int n = Integer.parseInt(s[0]);
+        int m = Integer.parseInt(s[1]);
+        if(m == 1){
+            while(n-- > 0){
+                System.out.println(m);
+            }
+            System.exit(0);
+        }
+        
+        int[] arr = new int[m + 1];
+        int index = 0;
+         index = (m + 1) / 2;
+        //else index = m / 2;
+        int start = index;
+        int l = 1;
+        int r = 1;
+        if(m % 2 == 1){
+        for(int i = 1; i <= m; i++){
+            
+            arr[i] = index;
+            if(i % 2 == 1){
+                index = start;
+                index -= l;
+                l++;
+            }
+            else{
+                index = start;
+                index += r;
+                r++;
+            }
+        }}
+        else{
+            for(int i = 1; i <= m; i++){
+            
+            arr[i] = index;
+            if(i % 2 == 0){
+                index = start;
+                index -= l;
+                l++;
+            }
+            else{
+                index = start;
+                index += r;
+                r++;
+            }
+        }
+        }
+        int i = 1;
+        while(n-- >0){
+            System.out.println(arr[i]);
+            i++;
+            if(i == m + 1){
+                i = 1;
+            }
+        }
+        
+        
+        
+            
+        }
+        
+        
+    }
+    
